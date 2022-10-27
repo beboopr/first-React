@@ -1,22 +1,28 @@
+import { useState } from 'react'
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const names = ['ED','eddy','Captain ED']
+
+function App() { 
+  const [myName,setmyName] = useState('Captain ED')
+  const [ counter, setCounter] = useState(0)
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {myName} is is cool.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {names.map(name => (
+          <button onClick={() => setmyName(name)}>{name}</button>
+        ))}
+       <button onClick={() =>setmyName('your mom')}>your mom</button>
+       <button onClick={() =>setmyName('your mama')}>your mama</button>
+       <p>you cliked the button {counter} times</p>
+       <button onClick={() => setCounter(counter - 1)}>-1</button>
+       <button onClick={() => setCounter(0)}>Reset</button>
+       <button onClick={() => setCounter(counter + 1)}>+1</button>
       </header>
     </div>
   );
